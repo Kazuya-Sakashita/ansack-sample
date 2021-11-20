@@ -1,0 +1,15 @@
+current directory: /Users/sakashitakazuya/Desktop/work/inoue/ransack-sample/vendor/bundle/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+/Users/sakashitakazuya/.rbenv/versions/3.0.1/bin/ruby -I /Users/sakashitakazuya/.rbenv/versions/3.0.1/lib/ruby/3.0.0 -r ./siteconf20211120-10104-svmvxr.rb extconf.rb
+creating Makefile
+
+current directory: /Users/sakashitakazuya/Desktop/work/inoue/ransack-sample/vendor/bundle/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= clean
+
+current directory: /Users/sakashitakazuya/Desktop/work/inoue/ransack-sample/vendor/bundle/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\=
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/sakashitakazuya/Desktop/work/inoue/ransack-sample/vendor/bundle/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20211120-10104-d4u7l4
