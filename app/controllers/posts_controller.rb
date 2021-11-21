@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true)
-               .page(params[:page]).per(10)
+               .page(params[:page]).per(20)
 
     # @posts = @posts.where.not(post_state:'inactive')
   end
@@ -40,6 +40,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @post.sleeping!
 
     respond_to do |format|
       if @post.save
