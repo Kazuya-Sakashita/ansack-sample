@@ -3,7 +3,8 @@ class Post < ApplicationRecord
   include AASM
 
   aasm column: :post_state do
-    state :active, initial: true
+    state :sleeping, initial: true
+    state :active
     state :inactive # 退会
 
     event :inactive do
@@ -11,7 +12,9 @@ class Post < ApplicationRecord
     end
 
     event :active do
-      transitions from: :inactive, to: :active
+      transitions from: [:sleeping, :inactive], to: :active
     end
+
+
   end
 end

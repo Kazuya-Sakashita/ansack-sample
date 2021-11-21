@@ -45,6 +45,7 @@
         <td><%= post.title %></td>
         <td><%= post.content %></td>
         <td><%= post.post_state %></td>
+        <td><%= link_to "ステータス変更", post_state_path(id:post.id)  %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -12,7 +12,24 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
   end
+  def state
+    @post = Post.find(params[:id])
+    case @post.post_state
 
+    when 'sleeping'
+      @post.active!
+      flash[:notice] = 'ステータスをactiveに変更しました！'
+      redirect_to posts_path
+    when 'active'
+      @post.inactive!
+      flash[:notice] = 'ステータスをinactiveに変更しました！'
+      redirect_to posts_path
+    when 'inactive'
+      redirect_to posts_path
+    else
+      redirect_to posts_path
+    end
+  end
   # GET /posts/new
   def new
     @post = Post.new
