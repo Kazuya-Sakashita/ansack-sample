@@ -1,5 +1,4 @@
 class Post < ApplicationRecord
-  
   include AASM
 
   aasm column: :post_state do
@@ -14,7 +13,5 @@ class Post < ApplicationRecord
     event :active do
       transitions from: [:sleeping, :inactive], to: :active
     end
-
-
   end
 end
