@@ -5,12 +5,31 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true)
+
+    # @posts = @posts.where.not(post_state:'inactive')
   end
 
   # GET /posts/1 or /posts/1.json
   def show
   end
+  def state
+    @post = Post.find(params[:id])
+    case @post.post_state
 
+    when 'sleeping'
+      @post.active!
+      flash[:notice] = 'ステータスをactiveに変更しました！'
+      redirect_to posts_path
+    when 'active'
+      @post.inactive!
+      flash[:notice] = 'ステータスをinactiveに変更しました！'
+      redirect_to posts_path
+    when 'inactive'
+      redirect_to posts_path
+    else
+      redirect_to posts_path
+    end
+  end
   # GET /posts/new
   def new
     @post = Post.new
@@ -50,7 +69,7 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
-    @post.destroy
+    @post.inactive!
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
